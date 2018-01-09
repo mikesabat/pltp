@@ -1,10 +1,6 @@
-#arr.insert(3, 'apple')  #=> [0, 1, 2, 'apple', 3, 4, 5, 6]
 
 words = []
 new_word = 1
-
-# puts "Enter a word >>>"
-# new_word = gets.chomp.downcase
 
 while new_word != ""
 
@@ -12,29 +8,27 @@ while new_word != ""
 	new_word = gets.chomp.downcase
 
 	last_word = words.length - 1
-
-		while words[last_word].to_s > new_word.to_s
-			last_word = last_word - 1
+	puts "new word #{new_word} being compared to position #{last_word}, #{words[last_word]}"	
+	
+		while (words[last_word].to_s > new_word.to_s) and (last_word != 0) #runs if the new word comes before the last word
+			puts "new word #{new_word} comes before #{words[last_word]} at position #{last_word},"
+			last_word = (last_word - 1) #make absolute? exit.abs 
+			puts "So we are moving to the new position in the array spot #{last_word} and comparing #{new_word} to #{words[last_word]}"
+			puts
 		end
-		
 
-	words.insert(last_word + 1, new_word)
+	if (last_word == 0) and (words[last_word].to_s > new_word.to_s)
+		puts "This should be the first word"
+		insert_spot = 0
+	else
+		insert_spot = last_word + 1
+	end
+	puts "Let's insert new word in the array spot #{insert_spot}"
+	words.insert(insert_spot, new_word)
 
 	puts words.to_s 			
 end
 
 puts words.to_s
 
-
-
-	# while (words[word_order].to_s < new_word) and (words[word_order+1].to_s < new_word)
-		# 	puts "OKOKOKOK"
-		# 	word_order = word_order + 1
-
-		# 	puts "word order #{word_order.to_s}"
-
-		# while words[word_order].to_s < new_word
-		# 	word_order = word_order + 1		
-		# else
-		# 	words.insert(word_order, new_word)
-		# 	puts words.to_s #just to check	
+#if it comes before position [0] then make it position [0]
