@@ -3,7 +3,7 @@
 words = []
 
 puts "Enter a word >>>"
-add_in = gets.chomp
+add_in = gets.chomp.downcase
 
 while add_in != ""
 	words.push add_in
